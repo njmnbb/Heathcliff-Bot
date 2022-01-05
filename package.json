@@ -1,0 +1,24 @@
+{
+  "name": "heathcliff-bot",
+  "version": "1.0.0",
+  "description": "what am i doing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/njmnbb/Heathcliff-Bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/njmnbb/Heathcliff-Bot/issues"
+  },
+  "homepage": "https://github.com/njmnbb/Heathcliff-Bot#readme",
+  "dependencies": {
+    "discord.js": "^13.5.0",
+    "gocomics-api": "^1.1.1",
+    "node-cron": "^3.0.0"
+  }
+}
