@@ -16,7 +16,7 @@ client.on('ready', (client) => {
         tasks.splice(0, 1);
     }
     
-    const task = cron.schedule('0 16 0 * * *', () => {
+    const task = cron.schedule('0 0 8 * * *', () => {
         const date = new Date();
         const year = date.getFullYear();
         const month = date.getMonth() + 1;
@@ -28,7 +28,7 @@ client.on('ready', (client) => {
             URLOnly: true
         }).then(
             (response) => {
-                client.channels.cache.get('776261999595356223').send(`@everyone
+                client.channels.cache.get('789313283588489271').send(`@everyone
 Here's your daily Heathcliff comic! It's sure to be a meow-velous one!
                 
 ${response}`);
