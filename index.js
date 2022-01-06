@@ -3,6 +3,7 @@ const { Client, Intents } = require('discord.js');
 const { token } = require('./config.json');
 const { getImage } = require("gocomics-api");
 const cron = require("node-cron");
+const greetings = require('./greetings');
 
 // Create a new client instance
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
@@ -21,6 +22,7 @@ client.on('ready', (client) => {
         const year = date.getFullYear();
         const month = date.getMonth() + 1;
         const day = date.getDate();
+        let greeting = greetings[Math.floor(Math.random() * greetings.length) ];
 
         getImage({
             date: [year,month,day],
@@ -29,7 +31,7 @@ client.on('ready', (client) => {
         }).then(
             (response) => {
                 client.channels.cache.get('789313283588489271').send(`@everyone
-Here's your daily Heathcliff comic! It's sure to be a meow-velous one!
+Here's your daily Heathcliff comic! ${greeting}
                 
 ${response}`);
             }
