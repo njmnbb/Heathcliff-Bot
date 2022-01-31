@@ -4,6 +4,7 @@ const { token } = require('./config.json');
 const { getImage } = require("gocomics-api");
 const cron = require("node-cron");
 const greetings = require('./greetings');
+const fs = require('fs');
 
 // Create a new client instance
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
@@ -24,6 +25,12 @@ client.on('ready', (client) => {
         const day = date.getDate();
         let greeting = greetings[Math.floor(Math.random() * greetings.length) ];
 
+        fs.appendFile('logfile.log',
+            `Date being used: ${year} / ${month} / ${day} \n
+            Greeting being used: ${greeting}
+            \n\n-----------------------------------------------------------------\n\n`
+        );
+
         getImage({
             date: [year,month,day],
             comicName: "heathcliff",
@@ -35,7 +42,11 @@ Here's your daily Heathcliff comic! ${greeting}
                 
 ${response}`);
             }
-        );
+        ).catch(err => {
+            fs.appendFile('logfile.log',
+                `Error occured while fetching comic: ${err}
+                \n\n-----------------------------------------------------------------\n\n`);
+        });
     }, { scheduled: true, timezone: 'America/Chicago' });
 });
 
