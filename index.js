@@ -18,7 +18,7 @@ client.on('ready', (client) => {
         tasks.splice(0, 1);
     }
     
-    const task = cron.schedule('0 55 13 * * *', () => {
+    const task = cron.schedule('0 0 8 * * *', () => {
         const date = new Date();
         const year = date.getFullYear();
         const month = date.getMonth() + 1;
